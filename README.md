@@ -102,6 +102,64 @@ To develop an AI-based system capable of supporting students experiencing sympto
 
 The system follows a multi-layer architecture consisting of:
 
+
+```mermaid
+flowchart TB
+
+    subgraph Users
+        Student[Student]
+        Admin[Administrator]
+    end
+
+    subgraph Presentation Layer
+        WebUI[Web User Interface]
+    end
+
+    subgraph Application Layer
+        Auth[Authentication Module]
+        Chat[Conversation Management]
+        Mood[Mood Tracking]
+        PHQ[PHQ-9 Assessment]
+        Recommender[Recommendation Service]
+        AdminService[Admin Management]
+    end
+
+    subgraph AI Layer
+        NLP[NLP Processing]
+        Sentiment[Sentiment Analysis]
+        RiskModel[Depression Detection Model]
+    end
+
+    subgraph Data Layer
+        Database[(PostgreSQL Database)]
+    end
+
+    Student --> WebUI
+    Admin --> WebUI
+
+    WebUI --> Auth
+    WebUI --> Chat
+    WebUI --> Mood
+    WebUI --> PHQ
+    WebUI --> AdminService
+
+    Chat --> NLP
+    NLP --> Sentiment
+    Sentiment --> RiskModel
+
+    PHQ --> RiskModel
+
+    RiskModel --> Recommender
+
+    Auth --> Database
+    Chat --> Database
+    Mood --> Database
+    PHQ --> Database
+    Recommender --> Database
+    AdminService --> Database
+```
+
+
 ### Presentation Layer
 
 Provides the user interface through which students interact with the system.
