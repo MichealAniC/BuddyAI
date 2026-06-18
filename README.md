@@ -1,19 +1,14 @@
 # BuddyAI
 
 ### AI-Based System for Supporting Students with Depression in Tertiary Institutions
-
 ## Overview
 
 BuddyAI is an AI-powered mental health support system designed to assist students in tertiary institutions who may be experiencing symptoms of depression. The system leverages Natural Language Processing (NLP), sentiment analysis, mood monitoring, and the Patient Health Questionnaire (PHQ-9) framework to identify potential signs of depression and provide timely support resources.
 
 The primary objective of the system is not to replace professional mental health practitioners but to serve as an early intervention and support tool that encourages students to seek appropriate assistance when needed.
 
-This project was developed as a Final Year Project in partial fulfillment of the requirements for the award of a Bachelor's Degree in Computer Science.
-
 ---
-
 ## Problem Statement
-
 Depression is one of the most common mental health challenges affecting students in tertiary institutions. Academic pressure, financial difficulties, social isolation, and personal challenges often contribute to emotional distress among students.
 
 Unfortunately, many students do not seek professional help due to stigma, lack of awareness, limited access to counseling services, or delayed recognition of their symptoms.
@@ -27,8 +22,6 @@ BuddyAI addresses this challenge by providing:
 - Referral guidance for professional intervention when necessary
 
 ---
-
-## Project Objectives
 
 ### Main Objective
 
@@ -312,46 +305,9 @@ Important considerations include:
 - Transparency regarding AI-generated recommendations
 - Encouragement of professional mental health consultation when required
 
----
-
-## Installation
-
-### Clone Repository
-
-```bash
-git clone https://github.com/yourusername/buddyai.git
-
-cd buddyai
-```
-
-### Install Dependencies
-
-```bash
-npm install
-```
-
-### Configure Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
-DATABASE_URL=
-JWT_SECRET=
-OPENAI_API_KEY=
-```
-
-### Run Development Server
-
-```bash
-npm run dev
-```
-
----
 
 ## Future Improvements
-
 Planned enhancements include:
-
 - Mobile application development
 - Voice-based emotional analysis
 - Real-time counselor integration
@@ -360,33 +316,11 @@ Planned enhancements include:
 - Emergency risk detection
 
 ---
-
 ## Research Contribution
-
 This study contributes to the growing field of Artificial Intelligence in Mental Health by demonstrating how AI technologies can assist in the early detection and support of students experiencing symptoms of depression in tertiary institutions.
 
 ---
 
 ## Disclaimer
-
 BuddyAI does not provide medical diagnoses and should not be used as a replacement for professional mental health services.
-
 Users experiencing severe emotional distress are strongly encouraged to seek assistance from qualified mental health professionals, counselors, healthcare providers, or emergency services.
-
----
-
-## Author
-
-**Micheal Ani**
-
-Final Year Project
-
-Department of Computer Science
-
-2026
-
----
-
-## License
-
-This project is developed for academic and research purposes. Licensing terms will be specified upon project completion.
