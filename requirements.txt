@@ -1,1 +1,67 @@
+# ==========================
+# Web Framework
+# ==========================
+fastapi
+uvicorn[standard]
 
+# ==========================
+# Data Validation
+# ==========================
+pydantic
+pydantic-settings
+email-validator
+
+# ==========================
+# Database
+# ==========================
+sqlalchemy
+psycopg2-binary
+alembic
+
+# ==========================
+# Authentication & Security
+# ==========================
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt
+python-multipart
+
+# ==========================
+# Environment Variables
+# ==========================
+python-dotenv
+
+# ==========================
+# AI / NLP
+# ==========================
+nltk
+numpy
+pandas
+
+# ==========================
+# Date & Time Utilities
+# ==========================
+python-dateutil
+
+# ==========================
+# HTTP & API Utilities
+# ==========================
+httpx
+requests
+
+# ==========================
+# Logging & Monitoring
+# ==========================
+loguru
+
+# ==========================
+# Testing
+# ==========================
+pytest
+pytest-asyncio
+
+# ==========================
+# Development Utilities
+# ==========================
+black
+isort
