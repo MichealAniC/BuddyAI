@@ -390,7 +390,43 @@ flowchart TD
 
 ---
 
-## 12. Limitations
+## 12. NLTK Resource Setup
+
+BuddyAI uses the Natural Language Toolkit (NLTK) library for text processing and sentiment analysis.
+
+Before running the AI module for the first time, the required NLTK resources must be downloaded.
+
+### Required Resources
+
+- punkt
+- stopwords
+- vader_lexicon
+
+### Installation Script
+
+```python
+import nltk
+
+nltk.download("punkt")
+nltk.download("stopwords")
+nltk.download("vader_lexicon")
+```
+
+### Resource Purpose
+
+| Resource | Purpose |
+|-----------|----------|
+| punkt | Text tokenization |
+| stopwords | Common word filtering |
+| vader_lexicon | Sentiment analysis vocabulary used by VADER |
+
+### Expected Usage
+
+The setup script should be executed once during initial project setup. After installation, the resources are stored locally and can be reused by the application.
+
+---
+
+## 13. Limitations
 
 - BuddyAI is not a medical diagnostic tool.
 - Results depend on honest user input.
@@ -399,7 +435,7 @@ flowchart TD
 
 ---
 
-## 13. Future Enhancements
+## 14. Future Enhancements
 
 - Deep learning-based emotion detection
 - Voice sentiment analysis
