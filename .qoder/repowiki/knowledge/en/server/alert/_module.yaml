@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: server/alert
+title: alert
+scope:
+    - server/src/controllers/alert.controller.ts
+    - server/src/routes/alert.routes.ts
+    - server/src/services/alert.service.ts
+source_files: []
+depends_on: []
+related_to: []

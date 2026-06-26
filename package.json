@@ -1,0 +1,32 @@
+{
+  "name": "buddyai",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently --names \"server,client,nlp\" --prefix-colors \"blue,green,yellow\" \"npm run dev:server\" \"npm run dev:client\" \"npm run dev:nlp\"",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "dev:nlp": "cd nlp-service && python main.py",
+    "build": "cd server && npm run build && cd ../client && npm run build",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\" \"npm run start:nlp\"",
+    "start:server": "cd server && npm start",
+    "start:client": "cd client && npm start",
+    "start:nlp": "cd nlp-service && uvicorn main:app --port 8001",
+    "db:migrate": "npx prisma migrate dev --schema prisma/schema.prisma",
+    "db:generate": "npx prisma generate --schema prisma/schema.prisma",
+    "db:studio": "npx prisma studio --schema prisma/schema.prisma",
+    "setup": "npm install && cd server && npm install && cd ../client && npm install && cd ../nlp-service && pip install -r requirements.txt"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "prisma": "^6.19.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.19.3"
+  },
+  "allowScripts": {
+    "@prisma/client@6.19.3": true,
+    "@prisma/engines@6.19.3": true,
+    "prisma@6.19.3": true
+  }
+}

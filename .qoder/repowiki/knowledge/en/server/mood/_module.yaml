@@ -1,0 +1,10 @@
+schema_version: 1
+module_path: server/mood
+title: mood
+scope:
+    - server/src/controllers/mood.controller.ts
+    - server/src/routes/mood.routes.ts
+    - server/src/services/mood.service.ts
+source_files: []
+depends_on: []
+related_to: []

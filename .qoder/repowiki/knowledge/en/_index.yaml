@@ -1,0 +1,118 @@
+# 知识卡导出索引文件
+schema_version: 1
+locale: en-US
+branch: main
+nodes_managed: true
+exported_at: "2026-06-26T20:53:22Z"
+modules:
+    client:
+        dir_name: client
+        title: client
+        scope:
+            - client/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    nlp_service:
+        dir_name: nlp_service
+        title: nlp_service
+        scope:
+            - nlp-service/
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    server:
+        dir_name: server
+        title: server
+        scope:
+            - server/
+        source_files: []
+        children:
+            - server/alert
+            - server/assessment
+            - server/auth
+            - server/chat
+            - server/dashboard
+            - server/mood
+            - server/risk
+        depends_on: []
+        related_to: []
+    server/alert:
+        dir_name: alert
+        title: alert
+        scope:
+            - server/src/controllers/alert.controller.ts
+            - server/src/routes/alert.routes.ts
+            - server/src/services/alert.service.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    server/assessment:
+        dir_name: assessment
+        title: assessment
+        scope:
+            - server/src/controllers/assessment.controller.ts
+            - server/src/routes/assessment.routes.ts
+            - server/src/services/assessment.service.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    server/auth:
+        dir_name: auth
+        title: auth
+        scope:
+            - server/src/controllers/auth.controller.ts
+            - server/src/routes/auth.routes.ts
+            - server/src/services/auth.service.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    server/chat:
+        dir_name: chat
+        title: chat
+        scope:
+            - server/src/controllers/chat.controller.ts
+            - server/src/routes/chat.routes.ts
+            - server/src/services/chat.service.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    server/dashboard:
+        dir_name: dashboard
+        title: dashboard
+        scope:
+            - server/src/controllers/dashboard.controller.ts
+            - server/src/routes/dashboard.routes.ts
+            - server/src/services/dashboard.service.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    server/mood:
+        dir_name: mood
+        title: mood
+        scope:
+            - server/src/controllers/mood.controller.ts
+            - server/src/routes/mood.routes.ts
+            - server/src/services/mood.service.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []
+    server/risk:
+        dir_name: risk
+        title: risk
+        scope:
+            - server/src/controllers/risk.controller.ts
+            - server/src/routes/risk.routes.ts
+            - server/src/services/risk.service.ts
+        source_files: []
+        children: []
+        depends_on: []
+        related_to: []

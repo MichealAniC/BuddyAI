@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../server/node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  STUDENT
+  COUNSELLOR
+}
+
+enum Sentiment {
+  POSITIVE
+  NEUTRAL
+  NEGATIVE
+}
+
+enum Sender {
+  USER
+  BOT
+}
+
+enum SeverityLevel {
+  MINIMAL
+  MILD
+  MODERATE
+  MODERATELY_SEVERE
+  SEVERE
+}
+
+enum RiskLevel {
+  LOW
+  MODERATE
+  HIGH
+  SEVERE
+}
+
+enum AlertStatus {
+  PENDING
+  REVIEWED
+  RESOLVED
+}
+
+model User {
+  id              Int               @id @default(autoincrement())
+  fullName        String
+  email           String            @unique
+  passwordHash    String
+  role            Role              @default(STUDENT)
+  createdAt       DateTime          @default(now())
+  conversations   Conversation[]
+  moodEntries     MoodEntry[]
+  assessments     Phq9Assessment[]
+  recommendations Recommendation[]
+  riskAlerts      RiskAlert[]
+
+  @@index([email])
+}
+
+model Conversation {
+  id        Int       @id @default(autoincrement())
+  userId    Int
+  startedAt DateTime  @default(now())
+  user      User      @relation(fields: [userId], references: [id])
+  messages  Message[]
+
+  @@index([userId])
+}
+
+model Message {
+  id             Int          @id @default(autoincrement())
+  conversationId Int
+  messageText    String
+  sender         Sender
+  sentiment      Sentiment?
+  sentimentScore Float?
+  createdAt      DateTime     @default(now())
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+
+  @@index([conversationId])
+}
+
+model MoodEntry {
+  id         Int      @id @default(autoincrement())
+  userId     Int
+  moodRating Int
+  notes      String?
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Phq9Assessment {
+  id            Int           @id @default(autoincrement())
+  userId        Int
+  responses     Json
+  totalScore    Int
+  severityLevel SeverityLevel
+  completedAt   DateTime      @default(now())
+  user          User          @relation(fields: [userId], references: [id])
+  riskAlerts    RiskAlert[]
+
+  @@index([userId])
+}
+
+model Recommendation {
+  id                 Int       @id @default(autoincrement())
+  userId             Int
+  recommendationText String
+  riskLevel          RiskLevel
+  generatedAt        DateTime  @default(now())
+  user               User      @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model RiskAlert {
+  id           Int            @id @default(autoincrement())
+  userId       Int
+  assessmentId Int
+  riskLevel    RiskLevel
+  status       AlertStatus    @default(PENDING)
+  createdAt    DateTime       @default(now())
+  user         User           @relation(fields: [userId], references: [id])
+  assessment   Phq9Assessment @relation(fields: [assessmentId], references: [id])
+
+  @@index([userId])
+  @@index([assessmentId])
+}

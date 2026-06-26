@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.next/
+.env
+__pycache__/
+*.pyc
+venv/
+nltk_data/
+.vercel/

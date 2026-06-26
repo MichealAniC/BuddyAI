@@ -1,0 +1,51 @@
+'use client';
+
+import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { AppShell } from '@/components/layout/AppShell';
+import { Sidebar } from '@/components/layout/Sidebar';
+import { TopBar } from '@/components/layout/TopBar';
+import { MobileSidebar } from '@/components/layout/MobileSidebar';
+import { counsellorNavItems } from '@/constants/navigation';
+
+export default function CounsellorLayout({ children }: { children: React.ReactNode }) {
+  const { user, isAuthenticated, isLoading } = useAuth();
+  const router = useRouter();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.push('/login');
+    } else if (!isLoading && user?.role !== 'COUNSELLOR') {
+      router.push('/home');
+    }
+  }, [isLoading, isAuthenticated, user, router]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-surface">
+        <div className="animate-pulse text-neutral-400">Loading...</div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated || user?.role !== 'COUNSELLOR') {
+    return null;
+  }
+
+  return (
+    <>
+      <MobileSidebar isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)}>
+        <Sidebar items={counsellorNavItems} title="BuddyAI" subtitle="Counsellor Portal" />
+      </MobileSidebar>
+      <AppShell
+        sidebar={<Sidebar items={counsellorNavItems} title="BuddyAI" subtitle="Counsellor Portal" />}
+        topbar={<TopBar onMenuToggle={() => setMobileMenuOpen(true)} />}
+      >
+        {children}
+      </AppShell>
+    </>
+  );
+}
