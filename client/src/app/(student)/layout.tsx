@@ -9,6 +9,7 @@ import { Sidebar } from '@/components/layout/Sidebar';
 import { TopBar } from '@/components/layout/TopBar';
 import { MobileSidebar } from '@/components/layout/MobileSidebar';
 import { studentNavItems } from '@/constants/navigation';
+import { PageTransition } from '@/components/shared/PageTransition';
 
 export default function StudentLayout({ children }: { children: React.ReactNode }) {
   const { user, isAuthenticated, isLoading } = useAuth();
@@ -26,7 +27,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-surface">
-        <div className="animate-pulse text-neutral-400">Loading...</div>
+        <div className="animate-pulse text-text-muted">Loading...</div>
       </div>
     );
   }
@@ -44,7 +45,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
         sidebar={<Sidebar items={studentNavItems} title="BuddyAI" subtitle="Your wellness companion" />}
         topbar={<TopBar onMenuToggle={() => setMobileMenuOpen(true)} />}
       >
-        {children}
+        <PageTransition>{children}</PageTransition>
       </AppShell>
     </>
   );

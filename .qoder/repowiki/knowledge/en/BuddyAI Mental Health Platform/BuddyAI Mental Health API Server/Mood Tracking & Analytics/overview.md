@@ -1,0 +1,1 @@
+Manages user mood logging, historical retrieval, and trend analysis with authentication enforcement.

@@ -1,0 +1,4 @@
+- Built on Next.js 16 App Router with TypeScript, using `src/app` for file-based routing and `src/components` for shared UI.
+- Centralized layout in `src/app/layout.tsx` wraps all pages with a responsive `Navbar` and global styles.
+- API communication is abstracted in `src/lib/api.ts`, handling JWT injection from `localStorage` and automatic redirection on 401 errors.
+- Authentication state management relies on `localStorage` via `src/lib/auth.ts`, with client-side role checks (`COUNSELLOR` vs student) driving navigation in `src/app/page.tsx` and the navbar.

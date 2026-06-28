@@ -1,3 +1,5 @@
+import { getMoodEmojiForRating, getMoodLabelForRating } from './moodMapping';
+
 export function formatDate(date: string | Date): string {
   return new Intl.DateTimeFormat('en-US', {
     month: 'short',
@@ -39,24 +41,10 @@ export function formatRelativeTime(date: string | Date): string {
   return formatDate(date);
 }
 
-export function getMoodEmoji(rating: number): string {
-  const emojis: Record<number, string> = {
-    1: '😢',
-    2: '😟',
-    3: '😐',
-    4: '🙂',
-    5: '😊',
-  };
-  return emojis[rating] || '😐';
+export function getMoodEmoji(moodRating: number): string {
+  return getMoodEmojiForRating(moodRating);
 }
 
-export function getMoodLabel(rating: number): string {
-  const labels: Record<number, string> = {
-    1: 'Very Low',
-    2: 'Low',
-    3: 'Okay',
-    4: 'Good',
-    5: 'Great',
-  };
-  return labels[rating] || 'Unknown';
+export function getMoodLabel(moodRating: number): string {
+  return getMoodLabelForRating(moodRating);
 }

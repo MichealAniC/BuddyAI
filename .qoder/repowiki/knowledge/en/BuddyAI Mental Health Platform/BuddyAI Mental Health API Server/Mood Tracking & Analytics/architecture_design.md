@@ -1,0 +1,3 @@
+- Follows a standard three-layer architecture: routes (`mood.routes.ts`) define endpoints and apply `authenticate` middleware, controllers (`mood.controller.ts`) handle request validation and response formatting, and services (`mood.service.ts`) encapsulate Prisma-based data access and business logic.
+- Dependency flow is unidirectional: routes → controllers → services → Prisma client.
+- Authentication is enforced at the route level via shared middleware, while input validation (e.g., moodRating range 1-5) occurs in the controller layer.

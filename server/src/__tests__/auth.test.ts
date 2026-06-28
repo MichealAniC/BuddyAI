@@ -47,7 +47,12 @@ describe('Auth Service', () => {
         updatedAt: new Date(),
       });
 
-      const result = await registerUser('Alice', 'alice@example.com', 'password123');
+      const result = await registerUser({
+        fullName: 'Alice',
+        email: 'alice@example.com',
+        password: 'password123',
+        role: 'STUDENT',
+      });
 
       expect(result.token).toBe('mock-jwt-token');
       expect(result.user).toEqual(
@@ -78,9 +83,14 @@ describe('Auth Service', () => {
     it('should throw if email is already registered', async () => {
       mockPrisma.user.findUnique.mockResolvedValue({ id: 1 } as any);
 
-      await expect(registerUser('Bob', 'taken@example.com', 'password123')).rejects.toThrow(
-        'Email already registered.'
-      );
+      await expect(
+        registerUser({
+          fullName: 'Bob',
+          email: 'taken@example.com',
+          password: 'password123',
+          role: 'STUDENT',
+        })
+      ).rejects.toThrow('Email already registered.');
     });
   });
 

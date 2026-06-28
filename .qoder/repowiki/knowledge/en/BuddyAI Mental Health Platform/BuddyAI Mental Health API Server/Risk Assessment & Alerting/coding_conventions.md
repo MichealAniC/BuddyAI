@@ -1,0 +1,2 @@
+- Controllers consistently check for `req.user` existence and return a 401 status if authentication context is missing before invoking service methods.
+- Service functions use hardcoded time windows (7 days for recent activity, 30 days for historical comparison) to calculate trend-based metrics like mood decline.

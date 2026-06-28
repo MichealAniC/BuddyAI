@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: server/assessment
+title: PHQ-9 Depression Assessment
+scope:
+    - server/src/controllers/assessment.controller.ts
+    - server/src/routes/assessment.routes.ts
+    - server/src/services/assessment.service.ts
+source_files: []
+depends_on: []
+related_to:
+    - path: server/risk

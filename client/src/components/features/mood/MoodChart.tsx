@@ -14,7 +14,7 @@ export function MoodChart({ data }: MoodChartProps) {
     .slice(-30)
     .map((entry) => ({
       date: new Date(entry.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-      rating: entry.rating,
+      rating: entry.moodRating,
     }));
 
   if (chartData.length === 0) {

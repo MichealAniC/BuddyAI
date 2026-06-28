@@ -10,8 +10,14 @@ interface MessageBubbleProps {
   userName?: string;
 }
 
+const sentimentStyles: Record<string, string> = {
+  POSITIVE: 'bg-sage-50 text-sage-700 border-sage-200',
+  NEGATIVE: 'bg-red-50 text-red-600 border-red-200',
+  NEUTRAL: 'bg-neutral-50 text-neutral-500 border-neutral-200',
+};
+
 export function MessageBubble({ message, userName }: MessageBubbleProps) {
-  const isUser = message.role === 'user';
+  const isUser = message.sender === 'USER';
 
   return (
     <div className={cn('flex gap-3 max-w-[85%]', isUser ? 'ml-auto flex-row-reverse' : '')}>
@@ -31,14 +37,26 @@ export function MessageBubble({ message, userName }: MessageBubbleProps) {
             'px-4 py-2.5 rounded-2xl text-sm leading-relaxed',
             isUser
               ? 'bg-primary-500 text-white rounded-br-md'
-              : 'bg-neutral-100 text-neutral-800 rounded-bl-md'
+              : 'bg-sage-50 text-neutral-800 border border-sage-100 rounded-bl-md'
           )}
         >
-          {message.content}
+          {message.messageText}
         </div>
-        <span className="text-[11px] text-neutral-400 px-1">
-          {formatTime(message.createdAt)}
-        </span>
+        <div className="flex items-center gap-2 px-1">
+          <span className="text-[11px] text-neutral-400">
+            {formatTime(message.createdAt)}
+          </span>
+          {message.sentiment && message.sentiment !== 'NEUTRAL' && (
+            <span
+              className={cn(
+                'inline-flex items-center rounded-full border px-2 py-0.5 text-[10px] font-medium',
+                sentimentStyles[message.sentiment] || sentimentStyles.NEUTRAL
+              )}
+            >
+              {message.sentiment === 'POSITIVE' ? '😊 Positive' : '😔 Negative'}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );

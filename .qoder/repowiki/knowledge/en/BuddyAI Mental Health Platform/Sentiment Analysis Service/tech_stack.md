@@ -1,0 +1,1 @@
+NLTK with VADER lexicon for rule-based sentiment scoring; punkt tokenizer and English stopwords corpus bundled locally in `nltk_data/`.

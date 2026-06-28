@@ -1,0 +1,1 @@
+Evaluates user mental health risk using PHQ-9 scores, sentiment analysis, and mood trends to generate recommendations and trigger high-risk alerts.

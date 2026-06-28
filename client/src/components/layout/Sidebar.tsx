@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { NavItem } from '@/constants/navigation';
@@ -18,13 +19,16 @@ export function Sidebar({ items, title, subtitle }: SidebarProps) {
     <div className="flex flex-col h-full">
       {/* Logo / Brand */}
       <div className="flex items-center gap-3 px-6 py-5 border-b border-border">
-        <div className="w-9 h-9 rounded-xl bg-primary-500 flex items-center justify-center">
-          <span className="text-white font-bold text-sm">B</span>
-        </div>
-        <div>
-          <h1 className="text-base font-semibold text-neutral-800">{title}</h1>
-          {subtitle && <p className="text-xs text-neutral-400">{subtitle}</p>}
-        </div>
+        <Image
+          src="/assets/BuddyAi Logo.png"
+          alt="BuddyAI"
+          width={0}
+          height={0}
+          sizes="100vw"
+          priority
+          className="h-auto w-[76px]"
+          style={{ objectFit: 'contain' }}
+        />
       </div>
 
       {/* Navigation */}

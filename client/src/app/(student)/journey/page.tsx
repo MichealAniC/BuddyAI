@@ -6,10 +6,10 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useMoodEntries, useCreateMood } from '@/hooks/useMood';
-import { useAssessments, useSubmitAssessment } from '@/hooks/useAssessment';
+import { useAssessments } from '@/hooks/useAssessment';
 import { MoodSelector } from '@/components/features/mood/MoodSelector';
 import { MoodChart } from '@/components/features/mood/MoodChart';
-import { Phq9Form } from '@/components/features/assessment/Phq9Form';
+import { Phq9Assessment } from '@/components/features/assessment/Phq9Assessment';
 import { getMoodEmoji, formatRelativeTime } from '@/utils/formatters';
 import { getSeverityColor } from '@/utils/colors';
 import { useToast } from '@/hooks/useToast';
@@ -22,12 +22,11 @@ export default function JourneyPage() {
   const { data: moods, isLoading: moodsLoading } = useMoodEntries();
   const { data: assessments, isLoading: assessmentsLoading } = useAssessments();
   const createMood = useCreateMood();
-  const submitAssessment = useSubmitAssessment();
   const { showToast } = useToast();
 
   const handleMoodSubmit = (rating: number, notes?: string) => {
     createMood.mutate(
-      { rating, notes },
+      { moodRating: rating, notes },
       {
         onSuccess: () => showToast('Mood logged successfully!', 'success'),
         onError: () => showToast('Failed to log mood. Please try again.', 'error'),
@@ -35,14 +34,9 @@ export default function JourneyPage() {
     );
   };
 
-  const handleAssessmentSubmit = (answers: number[]) => {
-    submitAssessment.mutate(answers, {
-      onSuccess: () => {
-        showToast('Assessment submitted!', 'success');
-        setShowAssessmentForm(false);
-      },
-      onError: () => showToast('Failed to submit assessment.', 'error'),
-    });
+  const handleAssessmentSubmitted = () => {
+    // Intentionally left empty: Phq9Assessment displays its own success state.
+    // The parent dashboard history will refresh automatically via React Query.
   };
 
   return (
@@ -125,9 +119,9 @@ export default function JourneyPage() {
                       className="flex items-center justify-between py-2 px-3 rounded-[10px] bg-neutral-50"
                     >
                       <div className="flex items-center gap-3">
-                        <span className="text-xl">{getMoodEmoji(mood.rating)}</span>
+                        <span className="text-xl">{getMoodEmoji(mood.moodRating)}</span>
                         <div>
-                          <p className="text-sm font-medium text-neutral-700">{mood.rating}/5</p>
+                          <p className="text-sm font-medium text-neutral-700">{mood.moodRating}/5</p>
                           {mood.notes && (
                             <p className="text-xs text-neutral-500 truncate max-w-[200px]">
                               {mood.notes}
@@ -160,10 +154,7 @@ export default function JourneyPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <Phq9Form
-                  onSubmit={handleAssessmentSubmit}
-                  disabled={submitAssessment.isPending}
-                />
+                <Phq9Assessment onSubmitted={handleAssessmentSubmitted} />
               </CardContent>
             </Card>
           ) : (
@@ -206,12 +197,12 @@ export default function JourneyPage() {
                         <span className="text-lg font-semibold text-neutral-700">
                           {a.totalScore}/27
                         </span>
-                        <Badge className={getSeverityColor(a.severity)}>
-                          {a.severity.replace('_', ' ')}
+                        <Badge className={getSeverityColor(a.severityLevel)}>
+                          {a.severityLevel.replace('_', ' ')}
                         </Badge>
                       </div>
                       <span className="text-xs text-neutral-400">
-                        {formatRelativeTime(a.createdAt)}
+                        {formatRelativeTime(a.completedAt)}
                       </span>
                     </div>
                   ))}

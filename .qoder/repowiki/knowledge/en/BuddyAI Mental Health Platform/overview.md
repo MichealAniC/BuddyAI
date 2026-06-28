@@ -1,0 +1,1 @@
+Orchestrates a multi-service mental health support system by unifying a Next.js client, Node.js API, and Python NLP service around a shared Prisma data model.

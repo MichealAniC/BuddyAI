@@ -1,0 +1,2 @@
+- Controllers consistently check for `req.user` existence and return a 401 status if missing before proceeding with business logic.
+- Service functions use Prisma client directly for database operations, returning raw model instances or arrays without additional DTO mapping in this module.

@@ -12,8 +12,8 @@ import Link from 'next/link';
 export default function CasesPage() {
   const { data: alerts, isLoading } = useAlerts();
 
-  // Cases = alerts that have been reviewed (active cases being tracked)
-  const activeCases = alerts?.filter(a => a.status === 'REVIEWED') || [];
+  // Cases = alerts currently under review or with follow-up scheduled
+  const activeCases = alerts?.filter(a => a.status === 'UNDER_REVIEW' || a.status === 'FOLLOW_UP_SCHEDULED') || [];
 
   return (
     <div className="max-w-5xl mx-auto space-y-6">
@@ -57,7 +57,7 @@ export default function CasesPage() {
           <CardContent className="flex flex-col items-center text-center py-12">
             <FolderOpen className="w-10 h-10 text-neutral-300 mb-3" />
             <p className="text-sm text-neutral-500">No active cases at the moment.</p>
-            <p className="text-xs text-neutral-400 mt-1">Cases appear here when alerts are marked as reviewed.</p>
+            <p className="text-xs text-neutral-400 mt-1">Cases appear here when alerts are under review or have a follow-up scheduled.</p>
           </CardContent>
         </Card>
       )}

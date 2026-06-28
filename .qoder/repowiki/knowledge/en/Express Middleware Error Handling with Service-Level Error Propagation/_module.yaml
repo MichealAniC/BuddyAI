@@ -1,0 +1,15 @@
+schema_version: 1
+module_path: error_handling
+title: Express Middleware Error Handling with Service-Level Error Propagation
+scope: []
+source_files:
+    - server/src/middleware/errorHandler.ts
+    - server/src/index.ts
+    - server/src/middleware/auth.ts
+    - server/src/controllers/auth.controller.ts
+    - server/src/services/auth.service.ts
+    - server/src/services/chat.service.ts
+    - client/src/lib/api.ts
+    - nlp-service/main.py
+depends_on: []
+related_to: []

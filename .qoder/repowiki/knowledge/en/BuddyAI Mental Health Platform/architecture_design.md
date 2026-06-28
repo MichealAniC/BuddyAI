@@ -1,0 +1,3 @@
+- **Shared Data Contract**: A root-level `prisma/schema.prisma` defines the canonical data model (Users, Conversations, MoodEntries, RiskAlerts) used by the API server for persistence and type generation.
+- **Service Orchestration**: The Node.js API server acts as the central orchestrator, consuming the Python NLP service via HTTP for sentiment analysis and exposing REST endpoints to the Next.js client.
+- **Infrastructure Wiring**: `docker-compose.yml` provisions the shared PostgreSQL database, while environment variables (e.g., `NLP_SERVICE_URL`, `DATABASE_URL`) configure cross-service communication and data access at startup.

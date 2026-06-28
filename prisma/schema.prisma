@@ -41,7 +41,8 @@ enum RiskLevel {
 
 enum AlertStatus {
   PENDING
-  REVIEWED
+  UNDER_REVIEW
+  FOLLOW_UP_SCHEDULED
   RESOLVED
 }
 
@@ -51,6 +52,8 @@ model User {
   email           String            @unique
   passwordHash    String
   role            Role              @default(STUDENT)
+  gender          String?
+  age             Int?
   createdAt       DateTime          @default(now())
   conversations   Conversation[]
   moodEntries     MoodEntry[]
@@ -125,7 +128,10 @@ model RiskAlert {
   assessmentId Int
   riskLevel    RiskLevel
   status       AlertStatus    @default(PENDING)
+  notes        String?
+  followUpDate DateTime?
   createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
   user         User           @relation(fields: [userId], references: [id])
   assessment   Phq9Assessment @relation(fields: [assessmentId], references: [id])
 

@@ -1,0 +1,1 @@
+Provides aggregated risk alert and student statistics for counsellor dashboards.

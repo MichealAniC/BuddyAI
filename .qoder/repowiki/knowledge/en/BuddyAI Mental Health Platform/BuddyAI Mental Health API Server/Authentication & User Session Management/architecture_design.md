@@ -1,0 +1,4 @@
+- Three-layer separation: routes (auth.routes.ts) define Express endpoints, controllers (auth.controller.ts) handle HTTP request/response, services (auth.service.ts) contain business logic.
+- Routes import controllers; controllers import services. Services depend on Prisma ORM client, password hashing utilities, and token generation utilities.
+- The GET /me route applies an external authenticate middleware before invoking the controller.
+- Controllers use a custom AuthRequest type and forward all errors to Express via next(err).

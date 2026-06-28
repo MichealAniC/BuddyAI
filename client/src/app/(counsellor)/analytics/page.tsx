@@ -2,129 +2,229 @@
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useAlerts } from '@/hooks/useAlerts';
-import { BarChart3, TrendingUp, PieChart } from 'lucide-react';
-import { useMemo } from 'react';
+import { useAnalyticsReportData } from '@/hooks/useAlerts';
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip as RechartsTooltip,
+  Legend,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  BarChart,
+  Bar,
+} from 'recharts';
+import { PieChart as PieChartIcon, TrendingUp, BarChart3 } from 'lucide-react';
 
-export default function AnalyticsPage() {
-  const { data: alerts, isLoading } = useAlerts();
+const RISK_COLORS: Record<string, string> = {
+  MINIMAL: '#22c55e',
+  MILD: '#3b82f6',
+  MODERATE: '#eab308',
+  MODERATELY_SEVERE: '#f97316',
+  SEVERE: '#ef4444',
+};
 
-  const analytics = useMemo(() => {
-    if (!alerts) return null;
-    const total = alerts.length;
-    const byRisk = {
-      LOW: alerts.filter(a => a.riskLevel === 'LOW').length,
-      MODERATE: alerts.filter(a => a.riskLevel === 'MODERATE').length,
-      HIGH: alerts.filter(a => a.riskLevel === 'HIGH').length,
-      SEVERE: alerts.filter(a => a.riskLevel === 'SEVERE').length,
-    };
-    const byStatus = {
-      PENDING: alerts.filter(a => a.status === 'PENDING').length,
-      REVIEWED: alerts.filter(a => a.status === 'REVIEWED').length,
-      RESOLVED: alerts.filter(a => a.status === 'RESOLVED').length,
-    };
-    const resolutionRate = total > 0 ? Math.round((byStatus.RESOLVED / total) * 100) : 0;
-    return { total, byRisk, byStatus, resolutionRate };
-  }, [alerts]);
+const STATUS_COLORS: Record<string, string> = {
+  'Under Review': '#3b82f6',
+  'Follow-up': '#a855f7',
+  Resolved: '#22c55e',
+};
+
+export default function ReportsPage() {
+  const { data, isLoading } = useAnalyticsReportData();
 
   return (
-    <div className="max-w-5xl mx-auto space-y-8">
+    <div className="max-w-6xl mx-auto space-y-8">
       <div>
-        <h1 className="text-2xl font-semibold text-neutral-800">Analytics</h1>
-        <p className="mt-1 text-neutral-500">Insights and trends across student alerts.</p>
+        <h1 className="text-2xl font-semibold text-neutral-800">Reports</h1>
+        <p className="mt-1 text-neutral-500">Intelligence and trends across the student population.</p>
       </div>
 
       {isLoading ? (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Skeleton className="h-32 w-full" />
-          <Skeleton className="h-32 w-full" />
-          <Skeleton className="h-32 w-full" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <Skeleton className="h-80 w-full" />
+          <Skeleton className="h-80 w-full" />
+          <Skeleton className="h-80 w-full lg:col-span-2" />
         </div>
-      ) : analytics ? (
-        <>
-          {/* Summary Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <Card>
-              <CardContent className="flex flex-col items-center text-center py-6">
-                <BarChart3 className="w-6 h-6 text-primary-500 mb-2" />
-                <p className="text-2xl font-semibold text-neutral-800">{analytics.total}</p>
-                <p className="text-xs text-neutral-500">Total Alerts</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="flex flex-col items-center text-center py-6">
-                <TrendingUp className="w-6 h-6 text-green-500 mb-2" />
-                <p className="text-2xl font-semibold text-neutral-800">{analytics.resolutionRate}%</p>
-                <p className="text-xs text-neutral-500">Resolution Rate</p>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardContent className="flex flex-col items-center text-center py-6">
-                <PieChart className="w-6 h-6 text-yellow-500 mb-2" />
-                <p className="text-2xl font-semibold text-neutral-800">{analytics.byStatus.PENDING}</p>
-                <p className="text-xs text-neutral-500">Awaiting Review</p>
-              </CardContent>
-            </Card>
-          </div>
-
+      ) : data ? (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Risk Distribution */}
           <Card>
             <CardHeader>
-              <CardTitle>Risk Distribution</CardTitle>
-              <CardDescription>Breakdown of alerts by risk level</CardDescription>
+              <CardTitle className="text-base flex items-center gap-2">
+                <PieChartIcon className="w-4 h-4 text-primary-500" />
+                Risk Distribution
+              </CardTitle>
+              <CardDescription>Latest PHQ-9 severity levels across students</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-3">
-                {Object.entries(analytics.byRisk).map(([level, count]) => (
-                  <div key={level} className="flex items-center gap-3">
-                    <span className="text-sm text-neutral-600 w-24">{level}</span>
-                    <div className="flex-1 h-6 bg-neutral-100 rounded-full overflow-hidden">
-                      <div
-                        className={`h-full rounded-full transition-all duration-500 ${
-                          level === 'SEVERE' ? 'bg-red-400' :
-                          level === 'HIGH' ? 'bg-orange-400' :
-                          level === 'MODERATE' ? 'bg-yellow-400' : 'bg-green-400'
-                        }`}
-                        style={{ width: `${analytics.total > 0 ? (count / analytics.total) * 100 : 0}%` }}
-                      />
-                    </div>
-                    <span className="text-sm font-medium text-neutral-700 w-8 text-right">{count}</span>
-                  </div>
-                ))}
-              </div>
+              <RiskDistributionChart data={data.populationHealth} />
             </CardContent>
           </Card>
 
-          {/* Status Breakdown */}
+          {/* Wellbeing Trend */}
           <Card>
             <CardHeader>
-              <CardTitle>Status Breakdown</CardTitle>
+              <CardTitle className="text-base flex items-center gap-2">
+                <TrendingUp className="w-4 h-4 text-primary-500" />
+                Wellbeing Trend
+              </CardTitle>
+              <CardDescription>Monthly average PHQ-9 scores</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-3 gap-4">
-                <div className="text-center p-4 rounded-2xl bg-yellow-50">
-                  <p className="text-xl font-semibold text-yellow-700">{analytics.byStatus.PENDING}</p>
-                  <p className="text-xs text-yellow-600 mt-1">Pending</p>
-                </div>
-                <div className="text-center p-4 rounded-2xl bg-blue-50">
-                  <p className="text-xl font-semibold text-blue-700">{analytics.byStatus.REVIEWED}</p>
-                  <p className="text-xs text-blue-600 mt-1">Reviewed</p>
-                </div>
-                <div className="text-center p-4 rounded-2xl bg-green-50">
-                  <p className="text-xl font-semibold text-green-700">{analytics.byStatus.RESOLVED}</p>
-                  <p className="text-xs text-green-600 mt-1">Resolved</p>
-                </div>
-              </div>
+              <WellbeingTrendChart data={data.trendData} />
             </CardContent>
           </Card>
-        </>
+
+          {/* Case Resolution Velocity */}
+          <Card className="lg:col-span-2">
+            <CardHeader>
+              <CardTitle className="text-base flex items-center gap-2">
+                <BarChart3 className="w-4 h-4 text-primary-500" />
+                Case Resolution Velocity
+              </CardTitle>
+              <CardDescription>Average hours spent in each case stage</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ResolutionVelocityChart data={data.resolutionVelocity} />
+            </CardContent>
+          </Card>
+        </div>
       ) : (
         <Card>
           <CardContent className="text-center py-12">
-            <p className="text-sm text-neutral-400">No data available for analytics.</p>
+            <p className="text-sm text-neutral-400">No report data available.</p>
           </CardContent>
         </Card>
       )}
+    </div>
+  );
+}
+
+function RiskDistributionChart({ data }: { data: { level: string; count: number }[] }) {
+  const chartData = data.filter((d) => d.count > 0);
+
+  if (chartData.length === 0) {
+    return <EmptyState message="No assessment data recorded yet." />;
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height={280}>
+      <PieChart>
+        <Pie
+          data={chartData}
+          dataKey="count"
+          nameKey="level"
+          cx="50%"
+          cy="50%"
+          innerRadius={60}
+          outerRadius={90}
+          paddingAngle={3}
+        >
+          {chartData.map((entry) => (
+            <Cell key={entry.level} fill={RISK_COLORS[entry.level] ?? '#94a3b8'} />
+          ))}
+        </Pie>
+        <RechartsTooltip
+          contentStyle={{ borderRadius: '10px', border: '1px solid #e7e5e4', fontSize: '12px' }}
+          formatter={(value: any, name: any) => {
+            const count = Number(value ?? 0);
+            return [`${count} student${count === 1 ? '' : 's'}`, String(name ?? '').replace(/_/g, ' ')];
+          }}
+        />
+        <Legend
+          verticalAlign="bottom"
+          height={36}
+          formatter={(value) => value.replace(/_/g, ' ')}
+        />
+      </PieChart>
+    </ResponsiveContainer>
+  );
+}
+
+function WellbeingTrendChart({ data }: { data: { month: string; averageScore: number }[] }) {
+  if (data.length === 0) {
+    return <EmptyState message="No trend data available yet." />;
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height={280}>
+      <LineChart data={data} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
+        <XAxis
+          dataKey="month"
+          tick={{ fontSize: 11, fill: '#a8a29e' }}
+          tickLine={false}
+          axisLine={false}
+        />
+        <YAxis
+          domain={[0, 27]}
+          tick={{ fontSize: 11, fill: '#a8a29e' }}
+          tickLine={false}
+          axisLine={false}
+        />
+        <RechartsTooltip
+          contentStyle={{ borderRadius: '10px', border: '1px solid #e7e5e4', fontSize: '12px' }}
+          formatter={(value: any) => [`Avg Score: ${Number(value ?? 0)}`, 'PHQ-9']}
+        />
+        <Line
+          type="monotone"
+          dataKey="averageScore"
+          stroke="#6366f1"
+          strokeWidth={2}
+          dot={{ fill: '#6366f1', r: 3 }}
+          activeDot={{ r: 5 }}
+        />
+      </LineChart>
+    </ResponsiveContainer>
+  );
+}
+
+function ResolutionVelocityChart({ data }: { data: { status: string; averageHours: number }[] }) {
+  const chartData = data.map((d) => ({ ...d, fill: STATUS_COLORS[d.status] ?? '#94a3b8' }));
+
+  if (chartData.every((d) => d.averageHours === 0)) {
+    return <EmptyState message="No resolved cases yet to calculate velocity." />;
+  }
+
+  return (
+    <ResponsiveContainer width="100%" height={280}>
+      <BarChart data={chartData} margin={{ top: 5, right: 5, left: -20, bottom: 5 }}>
+        <CartesianGrid strokeDasharray="3 3" stroke="#e7e5e4" vertical={false} />
+        <XAxis
+          dataKey="status"
+          tick={{ fontSize: 12, fill: '#a8a29e' }}
+          tickLine={false}
+          axisLine={false}
+        />
+        <YAxis
+          tick={{ fontSize: 11, fill: '#a8a29e' }}
+          tickLine={false}
+          axisLine={false}
+          label={{ value: 'Hours', angle: -90, position: 'insideLeft', style: { fill: '#a8a29e', fontSize: 11 } }}
+        />
+        <RechartsTooltip
+          contentStyle={{ borderRadius: '10px', border: '1px solid #e7e5e4', fontSize: '12px' }}
+          formatter={(value: any) => [`${Number(value ?? 0)} hours`, 'Average Time']}
+        />
+        <Bar dataKey="averageHours" radius={[6, 6, 0, 0]}>
+          {chartData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={entry.fill} />
+          ))}
+        </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
+function EmptyState({ message }: { message: string }) {
+  return (
+    <div className="flex items-center justify-center h-[280px] text-sm text-neutral-400">
+      {message}
     </div>
   );
 }

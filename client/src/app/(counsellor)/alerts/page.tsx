@@ -35,7 +35,7 @@ export default function AlertsPage() {
       {/* Filters */}
       <div className="flex flex-wrap gap-2">
         <div className="flex gap-1 p-1 bg-neutral-100 rounded-[10px]">
-          {(['ALL', 'PENDING', 'REVIEWED', 'RESOLVED'] as const).map((status) => (
+          {(['ALL', 'PENDING', 'UNDER_REVIEW', 'FOLLOW_UP_SCHEDULED', 'RESOLVED'] as const).map((status) => (
             <button
               key={status}
               onClick={() => setStatusFilter(status as AlertStatus | 'ALL')}
@@ -46,7 +46,7 @@ export default function AlertsPage() {
                   : 'text-neutral-500 hover:text-neutral-700'
               )}
             >
-              {status === 'ALL' ? 'All Status' : status}
+              {status === 'ALL' ? 'All Status' : status.replace(/_/g, ' ')}
             </button>
           ))}
         </div>

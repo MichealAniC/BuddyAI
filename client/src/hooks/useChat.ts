@@ -39,7 +39,7 @@ export function useSendMessage(conversationId: string | null) {
       apiRequest(`/api/conversations/${conversationId}/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ content }),
+        body: JSON.stringify({ messageText: content }),
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['messages', conversationId] });

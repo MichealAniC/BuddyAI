@@ -1,0 +1,1 @@
+Manages user conversations and messages, integrating NLP sentiment analysis to generate context-aware bot responses.

@@ -1,17 +1,40 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
+
+/* --------------------------------------------------------------------------
+ * BuddyAI Design System — Clinical Calm Theme Tokens
+ *
+ * These CSS custom properties are exposed as Tailwind utilities by the
+ * @theme inline block below. Example: --color-primary-500 enables the
+ * `bg-primary-500`, `text-primary-500`, and `border-primary-500` utilities.
+ * -------------------------------------------------------------------------- */
 
 @theme inline {
-  /* Primary: Muted Indigo-Blue */
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-300: #a5b4fc;
-  --color-primary-400: #818cf8;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-700: #4338ca;
+  /* Primary: Soft Teal / Blue-Teal */
+  --color-primary-50: #f0fdfa;
+  --color-primary-100: #ccfbf1;
+  --color-primary-200: #99f6e4;
+  --color-primary-300: #5eead4;
+  --color-primary-400: #2dd4bf;
+  --color-primary-500: #14b8a6;
+  --color-primary-600: #0d9488;
+  --color-primary-700: #0f766e;
+  --color-primary-800: #115e59;
+  --color-primary-900: #134e4a;
 
-  /* Secondary: Sage Green */
+  /* Success / Secondary: Sage Green */
+  --color-sage-50: #f0fdf4;
+  --color-sage-100: #dcfce7;
+  --color-sage-200: #bbf7d0;
+  --color-sage-300: #86efac;
+  --color-sage-400: #4ade80;
+  --color-sage-500: #6b9080;
+  --color-sage-600: #527a68;
+  --color-sage-700: #3d5c4e;
+  --color-sage-800: #2f4a3d;
+  --color-sage-900: #1f352c;
+
+  /* Secondary aliases (Sage Green) — preserved for existing components */
   --color-secondary-50: #f0fdf4;
   --color-secondary-100: #dcfce7;
   --color-secondary-200: #bbf7d0;
@@ -20,8 +43,34 @@
   --color-secondary-500: #6b9080;
   --color-secondary-600: #527a68;
   --color-secondary-700: #3d5c4e;
+  --color-secondary-800: #2f4a3d;
+  --color-secondary-900: #1f352c;
 
-  /* Neutral: Warm Grays */
+  /* Warning: Warm Amber */
+  --color-amber-50: #fffbeb;
+  --color-amber-100: #fef3c7;
+  --color-amber-200: #fde68a;
+  --color-amber-300: #fcd34d;
+  --color-amber-400: #fbbf24;
+  --color-amber-500: #f59e0b;
+  --color-amber-600: #d97706;
+  --color-amber-700: #b45309;
+  --color-amber-800: #92400e;
+  --color-amber-900: #78350f;
+
+  /* Danger / Critical: Soft Rose */
+  --color-rose-50: #fff1f2;
+  --color-rose-100: #ffe4e6;
+  --color-rose-200: #fecdd3;
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+  --color-rose-500: #f43f5e;
+  --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
+  --color-rose-800: #9f1239;
+  --color-rose-900: #881337;
+
+  /* Neutral: Clean warm gray */
   --color-neutral-50: #fafaf9;
   --color-neutral-100: #f5f5f4;
   --color-neutral-200: #e7e5e4;
@@ -33,60 +82,188 @@
   --color-neutral-800: #292524;
   --color-neutral-900: #1c1917;
 
+  /* Soft Slate: Cool gray for text */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-900: #0f172a;
+
   /* Semantic */
-  --color-success: #4ade80;
-  --color-warning: #fbbf24;
-  --color-danger: #f87171;
-  --color-info: #60a5fa;
+  --color-success: #6b9080;
+  --color-warning: #f59e0b;
+  --color-danger: #f43f5e;
+  --color-info: #14b8a6;
 
   /* Surfaces */
-  --color-surface: #fafaf9;
-  --color-surface-secondary: #f5f5f4;
+  --color-surface: #f8fafc;
+  --color-surface-secondary: #f1f5f9;
   --color-surface-elevated: #ffffff;
-  --color-border: #e7e5e4;
+  --color-border: #e2e8f0;
 
-  /* Shadows */
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.02);
-  --shadow-elevated: 0 4px 12px rgba(0,0,0,0.06);
+  /* Text */
+  --color-text: #334155;
+  --color-text-muted: #64748b;
+  --color-text-inverse: #ffffff;
 
   /* Typography */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
+  /* Shadows */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-elevated: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-sanctuary: 0 8px 32px rgba(0, 0, 0, 0.06), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-focus: 0 0 0 3px rgba(20, 184, 166, 0.25);
+
   /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-sanctuary: 24px;
   --radius-card: 16px;
   --radius-button: 10px;
   --radius-badge: 9999px;
 }
 
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
+  --background: var(--color-surface);
+  --foreground: var(--color-text);
+}
+
+* {
+  border-color: var(--color-border);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-tab-size: 4;
+  tab-size: 4;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans, system-ui, -apple-system, sans-serif);
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-@import "tailwindcss";
-
-:root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  line-height: 1.625;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Generous, calm focus states */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Smooth scrolling for the wellness-focused experience */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --------------------------------------------------------------------------
+ * Component Foundations
+ *
+ * These classes provide a consistent baseline for common UI patterns.
+ * Prefer the Tailwind utility variants defined in the UI components, but use
+ * these foundations when you need lightweight markup or custom overrides.
+ * -------------------------------------------------------------------------- */
+
+/* Buttons — base styles duplicated in each variant to satisfy Tailwind v4 @apply rules */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 ease-out rounded-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary-500 text-white hover:bg-primary-600 shadow-card hover:shadow-elevated;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 ease-out rounded-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-sage-500 text-white hover:bg-sage-600;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 ease-out rounded-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-border bg-surface-elevated text-text hover:bg-surface-secondary;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 ease-out rounded-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 text-text-muted hover:bg-surface-secondary hover:text-text;
+}
+
+.btn-danger {
+  @apply inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 ease-out rounded-button focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-300 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-rose-500 text-white hover:bg-rose-600;
+}
+
+/* Form Inputs */
+.input-field {
+  @apply flex h-10 w-full rounded-button border border-border bg-surface-elevated px-3 py-2 text-sm text-text placeholder:text-text-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:border-primary-400 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.input-field-error {
+  @apply flex h-10 w-full rounded-button border border-rose-300 bg-surface-elevated px-3 py-2 text-sm text-text placeholder:text-text-muted transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-rose-200 focus:border-rose-400 disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+/* Cards */
+.card {
+  @apply rounded-card border border-border bg-surface-elevated shadow-card p-6;
+}
+
+.card-elevated {
+  @apply rounded-card border border-border bg-surface-elevated shadow-elevated p-6;
+}
+
+/* Badges — base styles duplicated in each variant to satisfy Tailwind v4 @apply rules */
+.badge-default {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-surface-secondary text-text border-border;
+}
+
+.badge-primary {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-primary-50 text-primary-700 border-primary-200;
+}
+
+.badge-success {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-sage-50 text-sage-700 border-sage-200;
+}
+
+.badge-warning {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-amber-50 text-amber-700 border-amber-200;
+}
+
+.badge-danger {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-rose-50 text-rose-700 border-rose-200;
+}
+
+.badge-info {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium border bg-primary-50 text-primary-700 border-primary-200;
+}
+
+/* Typography hierarchy */
+.heading-1 {
+  @apply text-4xl font-semibold text-text tracking-tight;
+}
+
+.heading-2 {
+  @apply text-3xl font-semibold text-text tracking-tight;
+}
+
+.heading-3 {
+  @apply text-2xl font-semibold text-text;
+}
+
+.heading-4 {
+  @apply text-xl font-semibold text-text;
+}
+
+.body-text {
+  @apply text-base text-text leading-relaxed;
+}
+
+.body-small {
+  @apply text-sm text-text-muted leading-normal;
+}
+
+.caption {
+  @apply text-xs text-text-muted leading-normal;
 }

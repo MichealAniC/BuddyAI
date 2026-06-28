@@ -1,0 +1,15 @@
+schema_version: 1
+module_path: frontend_style
+title: Tailwind CSS v4 Utility-First Styling System
+scope: []
+source_files:
+    - client/src/app/globals.css
+    - client/postcss.config.mjs
+    - client/src/app/layout.tsx
+    - client/package.json
+    - client/src/components/Navbar.tsx
+    - client/src/app/login/page.tsx
+    - client/src/app/dashboard/page.tsx
+    - client/src/app/chat/page.tsx
+depends_on: []
+related_to: []

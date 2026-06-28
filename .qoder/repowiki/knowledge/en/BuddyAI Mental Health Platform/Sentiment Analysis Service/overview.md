@@ -1,0 +1,1 @@
+Provides text sentiment analysis via VADER lexicon with preprocessing, exposed through a FastAPI REST endpoint.

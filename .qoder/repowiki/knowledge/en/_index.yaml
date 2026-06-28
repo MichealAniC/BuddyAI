@@ -3,29 +3,328 @@ schema_version: 1
 locale: en-US
 branch: main
 nodes_managed: true
-exported_at: "2026-06-26T20:53:22Z"
+exported_at: "2026-06-27T00:17:42Z"
 modules:
+    "":
+        dir_name: BuddyAI Mental Health Platform
+        title: BuddyAI Mental Health Platform
+        scope:
+            - .gitignore
+            - ModelReadMe.md
+            - README.md
+            - docker-compose.yml
+            - package-lock.json
+            - package.json
+            - requirements.md
+            - requirements.txt
+            - prisma/
+            - .env
+            - .env.example
+            - .qoder\specs\BuddyAI_Implementation_Blueprint_8a53aea2.md
+            - client\.env.local
+            - client\.gitignore
+            - client\README.md
+            - client\eslint.config.mjs
+            - client\next-env.d.ts
+            - client\next.config.ts
+            - client\package-lock.json
+            - client\package.json
+            - client\postcss.config.mjs
+            - client\public\file.svg
+            - client\public\globe.svg
+            - client\public\next.svg
+            - client\public\vercel.svg
+            - client\public\window.svg
+            - client\src\app\assessment\page.tsx
+            - client\src\app\chat\page.tsx
+            - client\src\app\counsellor\alerts\[id]\page.tsx
+            - client\src\app\counsellor\dashboard\page.tsx
+            - client\src\app\dashboard\page.tsx
+            - client\src\app\favicon.ico
+            - client\src\app\globals.css
+            - client\src\app\layout.tsx
+            - client\src\app\login\page.tsx
+            - client\src\app\mood\page.tsx
+            - client\src\app\page.tsx
+            - client\src\app\register\page.tsx
+            - client\src\components\Navbar.tsx
+            - client\src\lib\api.ts
+            - client\src\lib\auth.ts
+            - client\tsconfig.json
+            - nlp-service\.gitignore
+            - nlp-service\main.py
+            - nlp-service\models.py
+            - nlp-service\nlp\__init__.py
+            - nlp-service\nlp\analyzer.py
+            - nlp-service\nlp\processor.py
+            - nlp-service\nltk_data\corpora\stopwords.zip
+            - nlp-service\nltk_data\corpora\stopwords\README
+            - nlp-service\nltk_data\corpora\stopwords\albanian
+            - nlp-service\nltk_data\corpora\stopwords\arabic
+            - nlp-service\nltk_data\corpora\stopwords\azerbaijani
+            - nlp-service\nltk_data\corpora\stopwords\basque
+            - nlp-service\nltk_data\corpora\stopwords\belarusian
+            - nlp-service\nltk_data\corpora\stopwords\bengali
+            - nlp-service\nltk_data\corpora\stopwords\catalan
+            - nlp-service\nltk_data\corpora\stopwords\chinese
+            - nlp-service\nltk_data\corpora\stopwords\danish
+            - nlp-service\nltk_data\corpora\stopwords\dutch
+            - nlp-service\nltk_data\corpora\stopwords\english
+            - nlp-service\nltk_data\corpora\stopwords\finnish
+            - nlp-service\nltk_data\corpora\stopwords\french
+            - nlp-service\nltk_data\corpora\stopwords\german
+            - nlp-service\nltk_data\corpora\stopwords\greek
+            - nlp-service\nltk_data\corpora\stopwords\hebrew
+            - nlp-service\nltk_data\corpora\stopwords\hinglish
+            - nlp-service\nltk_data\corpora\stopwords\hungarian
+            - nlp-service\nltk_data\corpora\stopwords\indonesian
+            - nlp-service\nltk_data\corpora\stopwords\italian
+            - nlp-service\nltk_data\corpora\stopwords\kazakh
+            - nlp-service\nltk_data\corpora\stopwords\nepali
+            - nlp-service\nltk_data\corpora\stopwords\norwegian
+            - nlp-service\nltk_data\corpora\stopwords\portuguese
+            - nlp-service\nltk_data\corpora\stopwords\romanian
+            - nlp-service\nltk_data\corpora\stopwords\russian
+            - nlp-service\nltk_data\corpora\stopwords\slovene
+            - nlp-service\nltk_data\corpora\stopwords\spanish
+            - nlp-service\nltk_data\corpora\stopwords\swedish
+            - nlp-service\nltk_data\corpora\stopwords\tajik
+            - nlp-service\nltk_data\corpora\stopwords\tamil
+            - nlp-service\nltk_data\corpora\stopwords\turkish
+            - nlp-service\nltk_data\corpora\stopwords\uzbek
+            - nlp-service\nltk_data\sentiment\vader_lexicon.zip
+            - nlp-service\nltk_data\tokenizers\punkt_tab.zip
+            - nlp-service\nltk_data\tokenizers\punkt_tab\README
+            - nlp-service\nltk_data\tokenizers\punkt_tab\czech\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\czech\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\czech\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\czech\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\danish\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\danish\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\danish\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\danish\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\dutch\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\dutch\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\dutch\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\dutch\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\english\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\english\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\english\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\english\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\estonian\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\estonian\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\estonian\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\estonian\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\finnish\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\finnish\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\finnish\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\finnish\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\french\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\french\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\french\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\french\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\german\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\german\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\german\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\german\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\greek\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\greek\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\greek\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\greek\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\italian\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\italian\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\italian\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\italian\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\malayalam\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\malayalam\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\malayalam\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\malayalam\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\norwegian\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\norwegian\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\norwegian\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\norwegian\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\polish\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\polish\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\polish\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\polish\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\portuguese\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\portuguese\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\portuguese\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\portuguese\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\russian\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\russian\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\russian\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\russian\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\slovene\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\slovene\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\slovene\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\slovene\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\spanish\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\spanish\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\spanish\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\spanish\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\swedish\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\swedish\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\swedish\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\swedish\sent_starters.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\turkish\abbrev_types.txt
+            - nlp-service\nltk_data\tokenizers\punkt_tab\turkish\collocations.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\turkish\ortho_context.tab
+            - nlp-service\nltk_data\tokenizers\punkt_tab\turkish\sent_starters.txt
+            - nlp-service\requirements.txt
+            - nlp-service\test_main.py
+            - prisma\schema.prisma
+            - server\.env
+            - server\package-lock.json
+            - server\package.json
+            - server\src\__tests__\assessment.test.ts
+            - server\src\__tests__\auth.test.ts
+            - server\src\__tests__\mood.test.ts
+            - server\src\__tests__\risk.test.ts
+            - server\src\__tests__\setup.ts
+            - server\src\config\env.ts
+            - server\src\config\prisma.ts
+            - server\src\controllers\alert.controller.ts
+            - server\src\controllers\assessment.controller.ts
+            - server\src\controllers\auth.controller.ts
+            - server\src\controllers\chat.controller.ts
+            - server\src\controllers\dashboard.controller.ts
+            - server\src\controllers\mood.controller.ts
+            - server\src\controllers\risk.controller.ts
+            - server\src\index.ts
+            - server\src\middleware\auth.ts
+            - server\src\middleware\errorHandler.ts
+            - server\src\routes\alert.routes.ts
+            - server\src\routes\assessment.routes.ts
+            - server\src\routes\auth.routes.ts
+            - server\src\routes\chat.routes.ts
+            - server\src\routes\dashboard.routes.ts
+            - server\src\routes\mood.routes.ts
+            - server\src\routes\risk.routes.ts
+            - server\src\services\alert.service.ts
+            - server\src\services\assessment.service.ts
+            - server\src\services\auth.service.ts
+            - server\src\services\chat.service.ts
+            - server\src\services\dashboard.service.ts
+            - server\src\services\mood.service.ts
+            - server\src\services\nlp.service.ts
+            - server\src\services\risk.service.ts
+            - server\src\types\index.ts
+            - server\src\utils\password.ts
+            - server\src\utils\token.ts
+            - server\tsconfig.json
+            - server\vitest.config.ts
+        source_files: []
+        children:
+            - client
+            - nlp_service
+            - server
+        depends_on: []
+        related_to: []
+    build_system:
+        dir_name: Monorepo Build Orchestration with npm Workspaces Pattern
+        title: Monorepo Build Orchestration with npm Workspaces Pattern
+        scope: []
+        source_files:
+            - package.json
+            - docker-compose.yml
+            - client/package.json
+            - client/next.config.ts
+            - client/tsconfig.json
+            - server/package.json
+            - server/tsconfig.json
+            - server/vitest.config.ts
+            - nlp-service/requirements.txt
+            - prisma/schema.prisma
+        children: []
+        depends_on: []
+        related_to: []
     client:
-        dir_name: client
-        title: client
+        dir_name: BuddyAI Web Client
+        title: BuddyAI Web Client
         scope:
             - client/
         source_files: []
         children: []
         depends_on: []
+        related_to:
+            - path: server
+    configuration_system:
+        dir_name: Environment-Driven Configuration with dotenv
+        title: Environment-Driven Configuration with dotenv
+        scope: []
+        source_files:
+            - .env.example
+            - server/src/config/env.ts
+            - server/.env
+            - client/.env.local
+            - docker-compose.yml
+            - prisma/schema.prisma
+            - server/src/config/prisma.ts
+            - nlp-service/main.py
+        children: []
+        depends_on: []
+        related_to: []
+    dependency_management:
+        dir_name: Multi-Service Dependency Orchestration with npm and pip
+        title: Multi-Service Dependency Orchestration with npm and pip
+        scope: []
+        source_files:
+            - package.json
+            - client/package.json
+            - server/package.json
+            - nlp-service/requirements.txt
+            - requirements.txt
+            - docker-compose.yml
+            - .gitignore
+        children: []
+        depends_on: []
+        related_to: []
+    error_handling:
+        dir_name: Express Middleware Error Handling with Service-Level Error Propagation
+        title: Express Middleware Error Handling with Service-Level Error Propagation
+        scope: []
+        source_files:
+            - server/src/middleware/errorHandler.ts
+            - server/src/index.ts
+            - server/src/middleware/auth.ts
+            - server/src/controllers/auth.controller.ts
+            - server/src/services/auth.service.ts
+            - server/src/services/chat.service.ts
+            - client/src/lib/api.ts
+            - nlp-service/main.py
+        children: []
+        depends_on: []
+        related_to: []
+    frontend_style:
+        dir_name: Tailwind CSS v4 Utility-First Styling System
+        title: Tailwind CSS v4 Utility-First Styling System
+        scope: []
+        source_files:
+            - client/src/app/globals.css
+            - client/postcss.config.mjs
+            - client/src/app/layout.tsx
+            - client/package.json
+            - client/src/components/Navbar.tsx
+            - client/src/app/login/page.tsx
+            - client/src/app/dashboard/page.tsx
+            - client/src/app/chat/page.tsx
+        children: []
+        depends_on: []
         related_to: []
     nlp_service:
-        dir_name: nlp_service
-        title: nlp_service
+        dir_name: Sentiment Analysis Service
+        title: Sentiment Analysis Service
         scope:
             - nlp-service/
         source_files: []
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: server/chat
     server:
-        dir_name: server
-        title: server
+        dir_name: BuddyAI Mental Health API Server
+        title: BuddyAI Mental Health API Server
         scope:
             - server/
         source_files: []
@@ -38,10 +337,11 @@ modules:
             - server/mood
             - server/risk
         depends_on: []
-        related_to: []
+        related_to:
+            - path: client
     server/alert:
-        dir_name: alert
-        title: alert
+        dir_name: Counsellor Alert Management
+        title: Counsellor Alert Management
         scope:
             - server/src/controllers/alert.controller.ts
             - server/src/routes/alert.routes.ts
@@ -49,10 +349,12 @@ modules:
         source_files: []
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: server/dashboard
+            - path: server/risk
     server/assessment:
-        dir_name: assessment
-        title: assessment
+        dir_name: PHQ-9 Depression Assessment
+        title: PHQ-9 Depression Assessment
         scope:
             - server/src/controllers/assessment.controller.ts
             - server/src/routes/assessment.routes.ts
@@ -60,10 +362,11 @@ modules:
         source_files: []
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: server/risk
     server/auth:
-        dir_name: auth
-        title: auth
+        dir_name: Authentication & User Session Management
+        title: Authentication & User Session Management
         scope:
             - server/src/controllers/auth.controller.ts
             - server/src/routes/auth.routes.ts
@@ -73,8 +376,8 @@ modules:
         depends_on: []
         related_to: []
     server/chat:
-        dir_name: chat
-        title: chat
+        dir_name: Chat & Sentiment-Aware Messaging
+        title: Chat & Sentiment-Aware Messaging
         scope:
             - server/src/controllers/chat.controller.ts
             - server/src/routes/chat.routes.ts
@@ -82,10 +385,12 @@ modules:
         source_files: []
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: nlp_service
+            - path: server/risk
     server/dashboard:
-        dir_name: dashboard
-        title: dashboard
+        dir_name: Dashboard Statistics
+        title: Dashboard Statistics
         scope:
             - server/src/controllers/dashboard.controller.ts
             - server/src/routes/dashboard.routes.ts
@@ -93,10 +398,11 @@ modules:
         source_files: []
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: server/alert
     server/mood:
-        dir_name: mood
-        title: mood
+        dir_name: Mood Tracking & Analytics
+        title: Mood Tracking & Analytics
         scope:
             - server/src/controllers/mood.controller.ts
             - server/src/routes/mood.routes.ts
@@ -104,10 +410,11 @@ modules:
         source_files: []
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: server/risk
     server/risk:
-        dir_name: risk
-        title: risk
+        dir_name: Risk Assessment & Alerting
+        title: Risk Assessment & Alerting
         scope:
             - server/src/controllers/risk.controller.ts
             - server/src/routes/risk.routes.ts
@@ -115,4 +422,8 @@ modules:
         source_files: []
         children: []
         depends_on: []
-        related_to: []
+        related_to:
+            - path: server/alert
+            - path: server/assessment
+            - path: server/chat
+            - path: server/mood

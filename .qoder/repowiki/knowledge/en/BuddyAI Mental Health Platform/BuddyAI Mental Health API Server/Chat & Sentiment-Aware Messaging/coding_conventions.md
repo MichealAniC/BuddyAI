@@ -1,0 +1,2 @@
+- Controllers uniformly check for `req.user` existence and return a 401 status if authentication is missing before invoking service methods.
+- Service methods that access specific conversations explicitly verify ownership by querying the conversation with both `id` and `userId`, throwing a 404 error if not found.

@@ -1,0 +1,3 @@
+- Follows a standard three-layer architecture: routes (`chat.routes.ts`) define endpoints with `authenticate` middleware, controllers (`chat.controller.ts`) handle request/response and validation, and services (`chat.service.ts`) contain business logic.
+- The service layer integrates with an external `nlp.service` for sentiment analysis and uses a Prisma client for data persistence.
+- Dependency flow is unidirectional: Routes → Controllers → Services → Data/NLP layers.

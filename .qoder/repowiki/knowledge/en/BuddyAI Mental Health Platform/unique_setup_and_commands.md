@@ -1,0 +1,1 @@
+Uses `docker-compose.yml` to bootstrap the shared PostgreSQL database required by the API server, while the NLP service and API server are typically started via their respective package managers or Python environments.

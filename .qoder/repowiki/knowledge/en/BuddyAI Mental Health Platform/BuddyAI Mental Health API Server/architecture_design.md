@@ -1,0 +1,4 @@
+- Centralized Express application in `src/index.ts` wires seven domain-specific route modules under a unified `/api` prefix.
+- Cross-cutting JWT authentication (`src/middleware/auth.ts`) is applied selectively: public for registration/login, mandatory for student features (mood, assessment, chat), and role-restricted (`requireRole('COUNSELLOR')`) for administrative endpoints (alerts, dashboard).
+- Shared Prisma client (`src/config/prisma.ts`) provides transactional data access across all services, enabling complex cross-domain logic like risk evaluation which aggregates PHQ-9 scores, chat sentiment, and mood trends.
+- Asynchronous integration with an external NLP microservice via `src/services/nlp.service.ts` enriches chat interactions with sentiment analysis, which subsequently feeds into the risk assessment engine.

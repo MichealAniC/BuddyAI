@@ -1,0 +1,4 @@
+- Controllers delegate all business logic to the service layer and only handle HTTP request validation and response formatting.
+- Services consistently strip the passwordHash field from user objects before returning them to prevent credential leakage.
+- Services throw Error objects augmented with a statusCode property to convey HTTP-level error semantics to the controller layer.
+- All controller handlers wrap async operations in try/catch blocks and forward caught errors to Express error-handling middleware via next(err).

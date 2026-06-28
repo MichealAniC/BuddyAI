@@ -1,0 +1,3 @@
+- Follows a standard Express controller-service pattern: `risk.routes.ts` defines authenticated endpoints (`POST /evaluate`, `GET /latest`), `risk.controller.ts` handles request validation and response formatting, and `risk.service.ts` contains the core business logic.
+- The service layer aggregates data from multiple Prisma models (`phq9Assessment`, `message`, `moodEntry`) to compute a composite risk level (`LOW` to `SEVERE`).
+- Side effects include persisting `recommendation` records and creating `riskAlert` entries for HIGH/SEVERE cases, establishing a write-heavy dependency on the persistence layer during evaluation.

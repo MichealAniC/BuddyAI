@@ -1,0 +1,3 @@
+- Controllers use try/catch blocks to delegate errors to Express next() middleware.
+- Service functions return raw Prisma query results or aggregated objects without additional error handling layers.
+- Route handlers enforce role-based access control using requireRole('COUNSELLOR') middleware at the router level.

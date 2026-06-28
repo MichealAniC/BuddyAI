@@ -1,0 +1,2 @@
+- Client-side components are explicitly marked with 'use client' directive when using hooks or browser APIs.
+- Authentication checks and user data retrieval are consistently performed using helper functions from `@/lib/auth`.

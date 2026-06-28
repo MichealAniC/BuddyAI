@@ -1,0 +1,3 @@
+- Controllers consistently check for `req.user` existence and return 401 errors before executing service logic.
+- Service functions accept primitive arguments (userId, dates) rather than full request objects to decouple business logic from HTTP context.
+- Async/await is used uniformly across controllers and services with try/catch blocks forwarding errors to Express next() middleware.

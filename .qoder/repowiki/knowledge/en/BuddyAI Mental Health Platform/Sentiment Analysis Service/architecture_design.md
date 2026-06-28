@@ -1,0 +1,4 @@
+- Entry point `main.py` bootstraps NLTK resources (punkt_tab, stopwords, vader_lexicon) into a local `nltk_data/` directory and configures CORS middleware.
+- Two internal submodules under `nlp/`: `processor.py` handles text normalization (lowercasing, tokenization, stopword removal), while `analyzer.py` wraps NLTK's SentimentIntensityAnalyzer to classify sentiment as positive/neutral/negative based on compound score thresholds.
+- Pydantic models in `models.py` define request/response contracts with input validation (non-empty text enforcement).
+- Dependency direction: main → nlp.processor + nlp.analyzer → nltk; all components are instantiated at module load time as singletons.

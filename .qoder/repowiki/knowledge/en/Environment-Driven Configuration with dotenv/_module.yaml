@@ -1,0 +1,15 @@
+schema_version: 1
+module_path: configuration_system
+title: Environment-Driven Configuration with dotenv
+scope: []
+source_files:
+    - .env.example
+    - server/src/config/env.ts
+    - server/.env
+    - client/.env.local
+    - docker-compose.yml
+    - prisma/schema.prisma
+    - server/src/config/prisma.ts
+    - nlp-service/main.py
+depends_on: []
+related_to: []

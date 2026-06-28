@@ -1,8 +1,18 @@
 import prisma from '../config/prisma';
 import { hashPassword, comparePassword } from '../utils/password';
 import { generateToken } from '../utils/token';
+import { Role } from '@prisma/client';
 
-export async function registerUser(fullName: string, email: string, password: string) {
+interface RegisterUserInput {
+  fullName: string;
+  email: string;
+  password: string;
+  role: Role;
+  gender?: string;
+  age?: number;
+}
+
+export async function registerUser({ fullName, email, password, role, gender, age }: RegisterUserInput) {
   const existing = await prisma.user.findUnique({ where: { email } });
   if (existing) {
     const error: Error & { statusCode?: number } = new Error('Email already registered.');
@@ -17,7 +27,9 @@ export async function registerUser(fullName: string, email: string, password: st
       fullName,
       email,
       passwordHash,
-      role: 'STUDENT',
+      role,
+      gender,
+      age,
     },
   });
 

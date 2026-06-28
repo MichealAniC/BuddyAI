@@ -1,0 +1,1 @@
+Manages risk alerts for student mental health, enabling counsellors to view, filter, and update alert statuses alongside comprehensive student summaries.

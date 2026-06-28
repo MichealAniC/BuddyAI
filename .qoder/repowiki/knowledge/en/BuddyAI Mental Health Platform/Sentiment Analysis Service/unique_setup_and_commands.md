@@ -1,0 +1,1 @@
+On startup, `main.py` auto-downloads required NLTK corpora into the local `nltk_data/` path and cleans stale `.zip` artifacts. The service listens on port 8001 by default (configurable via `NLP_PORT` env var) and is launched with `uvicorn.run`.

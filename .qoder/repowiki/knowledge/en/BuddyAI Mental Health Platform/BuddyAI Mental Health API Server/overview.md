@@ -1,0 +1,1 @@
+Orchestrates a student mental health support system by unifying assessment, mood tracking, and chat data to drive automated risk evaluation and counsellor alerting workflows.

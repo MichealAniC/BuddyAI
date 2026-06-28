@@ -3,7 +3,7 @@ export type Role = 'STUDENT' | 'COUNSELLOR';
 export type Sentiment = 'POSITIVE' | 'NEUTRAL' | 'NEGATIVE';
 export type SeverityLevel = 'MINIMAL' | 'MILD' | 'MODERATE' | 'MODERATELY_SEVERE' | 'SEVERE';
 export type RiskLevel = 'LOW' | 'MODERATE' | 'HIGH' | 'SEVERE';
-export type AlertStatus = 'PENDING' | 'REVIEWED' | 'RESOLVED';
+export type AlertStatus = 'PENDING' | 'UNDER_REVIEW' | 'FOLLOW_UP_SCHEDULED' | 'RESOLVED';
 
 // Models
 export interface User {
@@ -11,13 +11,15 @@ export interface User {
   email: string;
   fullName: string;
   role: Role;
+  gender?: string;
+  age?: number;
   createdAt: string;
 }
 
 export interface MoodEntry {
   id: string;
   userId: string;
-  rating: number;
+  moodRating: number;
   notes?: string;
   sentiment?: Sentiment;
   createdAt: string;
@@ -33,27 +35,26 @@ export interface Conversation {
   id: string;
   userId: string;
   title?: string;
-  createdAt: string;
-  updatedAt: string;
+  startedAt: string;
 }
 
 export interface Message {
   id: string;
   conversationId: string;
-  content: string;
-  role: 'user' | 'assistant';
+  messageText: string;
+  sender: 'USER' | 'BOT';
   sentiment?: Sentiment;
+  sentimentScore?: number;
   createdAt: string;
 }
 
 export interface Phq9Assessment {
   id: string;
   userId: string;
-  answers: number[];
+  responses: number[];
   totalScore: number;
-  severity: SeverityLevel;
-  recommendations?: string[];
-  createdAt: string;
+  severityLevel: SeverityLevel;
+  completedAt: string;
 }
 
 export interface RiskAlert {
@@ -63,9 +64,15 @@ export interface RiskAlert {
   status: AlertStatus;
   triggers: string[];
   notes?: string;
+  followUpDate?: string;
   reviewedBy?: string;
   createdAt: string;
   updatedAt: string;
+  assessment?: {
+    totalScore: number;
+    severityLevel: string;
+    completedAt?: string;
+  };
 }
 
 export interface Recommendation {

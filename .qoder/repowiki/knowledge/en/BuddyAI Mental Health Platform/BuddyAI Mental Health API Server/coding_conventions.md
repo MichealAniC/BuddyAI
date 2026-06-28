@@ -1,0 +1,3 @@
+- Strict Controller-Service separation where controllers handle HTTP request/response lifecycle and delegate business logic to dedicated services.
+- Uniform error handling using a global `errorHandler` middleware that catches service-thrown errors with optional `statusCode` properties.
+- Consistent use of `authenticate` middleware on all protected routes, with `requireRole` applied at the router level for admin-only domains.

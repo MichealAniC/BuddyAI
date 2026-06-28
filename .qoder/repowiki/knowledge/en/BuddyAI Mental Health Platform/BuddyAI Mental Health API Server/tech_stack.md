@@ -1,0 +1,1 @@
+Express.js with TypeScript, Prisma ORM for PostgreSQL, Vitest for testing, and external NLP service integration.

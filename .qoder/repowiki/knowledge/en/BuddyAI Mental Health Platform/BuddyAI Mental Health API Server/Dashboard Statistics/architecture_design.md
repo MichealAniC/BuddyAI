@@ -1,0 +1,3 @@
+- Follows a standard controller-service pattern: `dashboard.controller.ts` handles HTTP response formatting, while `dashboard.service.ts` encapsulates data aggregation logic.
+- Routes are defined in `dashboard.routes.ts`, enforcing `COUNSELLOR` role access via middleware before delegating to the controller.
+- Data is fetched from Prisma models (`riskAlert`, `user`) using parallel queries for performance in the service layer.

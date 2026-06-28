@@ -31,5 +31,5 @@ export const counsellorNavItems: NavItem[] = [
   { label: 'Students', href: '/students', icon: Users },
   { label: 'Alerts', href: '/alerts', icon: Bell },
   { label: 'Cases', href: '/cases', icon: FolderOpen },
-  { label: 'Analytics', href: '/analytics', icon: BarChart3 },
+  { label: 'Reports', href: '/analytics', icon: BarChart3 },
 ];

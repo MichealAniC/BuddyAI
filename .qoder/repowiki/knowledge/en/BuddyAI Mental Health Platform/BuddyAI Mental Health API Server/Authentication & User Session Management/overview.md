@@ -1,0 +1,1 @@
+Handles user registration, login, and profile retrieval with JWT-based authentication and password hashing.

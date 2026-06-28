@@ -11,7 +11,7 @@ interface AuthContextType {
   isLoading: boolean;
   role: Role | null;
   login: (email: string, password: string) => Promise<void>;
-  register: (fullName: string, email: string, password: string, role: Role) => Promise<void>;
+  register: (fullName: string, email: string, password: string, role: Role, age?: number, gender?: string) => Promise<void>;
   logout: () => void;
 }
 
@@ -47,10 +47,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUserState(data.user as User);
   }, []);
 
-  const register = useCallback(async (fullName: string, email: string, password: string, role: Role) => {
+  const register = useCallback(async (fullName: string, email: string, password: string, role: Role, age?: number, gender?: string) => {
     const data = await apiRequest('/api/auth/register', {
       method: 'POST',
-      body: JSON.stringify({ fullName, email, password, role }),
+      body: JSON.stringify({ fullName, email, password, role, age, gender }),
     });
     setToken(data.token);
     storeUser(data.user);

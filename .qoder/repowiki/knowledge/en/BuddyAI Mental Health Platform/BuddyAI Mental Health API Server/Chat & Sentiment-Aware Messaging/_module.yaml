@@ -1,0 +1,12 @@
+schema_version: 1
+module_path: server/chat
+title: Chat & Sentiment-Aware Messaging
+scope:
+    - server/src/controllers/chat.controller.ts
+    - server/src/routes/chat.routes.ts
+    - server/src/services/chat.service.ts
+source_files: []
+depends_on: []
+related_to:
+    - path: nlp_service
+    - path: server/risk

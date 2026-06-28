@@ -1,0 +1,1 @@
+Uses Prisma ORM for database interactions with a shared client instance from `../config/prisma`.

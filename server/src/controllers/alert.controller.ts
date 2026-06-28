@@ -2,6 +2,8 @@ import { Response, NextFunction } from 'express';
 import { AuthRequest } from '../types';
 import { getAlerts, getAlertById, updateAlertStatus, getStudentSummary } from '../services/alert.service';
 
+const VALID_STATUSES = ['PENDING', 'UNDER_REVIEW', 'FOLLOW_UP_SCHEDULED', 'RESOLVED'];
+
 export async function listAlerts(req: AuthRequest, res: Response, next: NextFunction): Promise<void> {
   try {
     const { status, riskLevel } = req.query;
@@ -32,10 +34,10 @@ export async function getAlert(req: AuthRequest, res: Response, next: NextFuncti
 export async function updateAlert(req: AuthRequest, res: Response, next: NextFunction): Promise<void> {
   try {
     const id = Number(req.params.id);
-    const { status } = req.body;
+    const { status, notes, followUpDate } = req.body;
 
-    if (!status || !['PENDING', 'REVIEWED', 'RESOLVED'].includes(status)) {
-      res.status(400).json({ error: 'Invalid status. Must be PENDING, REVIEWED, or RESOLVED.' });
+    if (!status || !VALID_STATUSES.includes(status)) {
+      res.status(400).json({ error: `Invalid status. Must be one of: ${VALID_STATUSES.join(', ')}.` });
       return;
     }
 
@@ -45,7 +47,7 @@ export async function updateAlert(req: AuthRequest, res: Response, next: NextFun
       return;
     }
 
-    const updated = await updateAlertStatus(id, status);
+    const updated = await updateAlertStatus(id, { status, notes, followUpDate });
     res.status(200).json(updated);
   } catch (err) {
     next(err);
@@ -66,4 +68,4 @@ export async function studentSummary(req: AuthRequest, res: Response, next: Next
   } catch (err) {
     next(err);
   }
-}
+}

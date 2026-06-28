@@ -21,7 +21,7 @@ export function useMoodTrends() {
 export function useCreateMood() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (data: { rating: number; notes?: string }) =>
+    mutationFn: (data: { moodRating: number; notes?: string }) =>
       apiRequest('/api/mood', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

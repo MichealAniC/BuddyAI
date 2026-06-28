@@ -1,0 +1,17 @@
+schema_version: 1
+module_path: build_system
+title: Monorepo Build Orchestration with npm Workspaces Pattern
+scope: []
+source_files:
+    - package.json
+    - docker-compose.yml
+    - client/package.json
+    - client/next.config.ts
+    - client/tsconfig.json
+    - server/package.json
+    - server/tsconfig.json
+    - server/vitest.config.ts
+    - nlp-service/requirements.txt
+    - prisma/schema.prisma
+depends_on: []
+related_to: []

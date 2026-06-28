@@ -1,0 +1,1 @@
+Uses Prisma ORM for database access, specifically querying multiple related tables for aggregated student mental health data.

@@ -1,0 +1,3 @@
+- Follows a standard Express MVC pattern: `alert.routes.ts` defines the API endpoints with role-based middleware (`requireRole('COUNSELLOR')`), delegating to `alert.controller.ts` for request handling.
+- `alert.controller.ts` acts as a thin layer, validating inputs and calling business logic in `alert.service.ts`.
+- `alert.service.ts` interacts directly with the Prisma ORM to query `riskAlert`, `user`, `phq9Assessment`, `moodEntry`, `message`, and `recommendation` tables, aggregating data for student summaries.

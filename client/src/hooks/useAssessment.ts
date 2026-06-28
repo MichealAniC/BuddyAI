@@ -18,7 +18,7 @@ export function useSubmitAssessment() {
       apiRequest('/api/assessments/phq9', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ answers }),
+        body: JSON.stringify({ responses: answers }),
       }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['assessments'] });

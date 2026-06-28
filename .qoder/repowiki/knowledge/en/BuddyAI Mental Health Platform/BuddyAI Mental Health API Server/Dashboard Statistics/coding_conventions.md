@@ -1,0 +1,2 @@
+- Controllers delegate business logic to services and handle only request/response lifecycle and error passing.
+- Services use Promise.all for parallelizing independent database count/groupBy operations.

@@ -1,0 +1,3 @@
+- Follows a standard three-layer architecture: routes define HTTP endpoints (`/phq9`), controllers handle request validation and authentication checks, and services encapsulate business logic including score calculation and Prisma ORM interactions.
+- The service layer exposes `submitAssessment`, `getAssessmentHistory`, and `generateRecommendation`, separating data persistence from clinical logic like severity classification.
+- Routes enforce authentication via the `authenticate` middleware before delegating to controller handlers.

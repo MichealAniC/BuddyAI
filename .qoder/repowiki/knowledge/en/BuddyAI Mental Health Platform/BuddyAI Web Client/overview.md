@@ -1,0 +1,1 @@
+Next.js-based web interface providing role-specific dashboards and mental health support features for students and counsellors.

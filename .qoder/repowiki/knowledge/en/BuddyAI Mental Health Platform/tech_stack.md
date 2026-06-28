@@ -1,0 +1,1 @@
+PostgreSQL (shared persistence layer), Prisma ORM (shared schema definition)

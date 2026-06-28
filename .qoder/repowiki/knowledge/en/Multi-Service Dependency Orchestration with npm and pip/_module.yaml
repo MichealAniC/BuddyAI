@@ -1,0 +1,14 @@
+schema_version: 1
+module_path: dependency_management
+title: Multi-Service Dependency Orchestration with npm and pip
+scope: []
+source_files:
+    - package.json
+    - client/package.json
+    - server/package.json
+    - nlp-service/requirements.txt
+    - requirements.txt
+    - docker-compose.yml
+    - .gitignore
+depends_on: []
+related_to: []

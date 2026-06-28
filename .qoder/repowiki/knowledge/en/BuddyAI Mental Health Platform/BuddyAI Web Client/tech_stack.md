@@ -1,0 +1,1 @@
+Next.js 16.2.9 with React 19, Tailwind CSS v4 for styling, and TypeScript 5.

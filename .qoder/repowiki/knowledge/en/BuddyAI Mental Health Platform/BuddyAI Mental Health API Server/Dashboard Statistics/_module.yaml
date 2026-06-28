@@ -1,0 +1,11 @@
+schema_version: 1
+module_path: server/dashboard
+title: Dashboard Statistics
+scope:
+    - server/src/controllers/dashboard.controller.ts
+    - server/src/routes/dashboard.routes.ts
+    - server/src/services/dashboard.service.ts
+source_files: []
+depends_on: []
+related_to:
+    - path: server/alert

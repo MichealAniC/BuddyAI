@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/useToast';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+import { SanctuaryCard } from '@/components/shared/SanctuaryCard';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -36,53 +36,46 @@ export default function LoginPage() {
   };
 
   return (
-    <Card className="shadow-elevated">
-      <CardHeader className="text-center">
-        <div className="mx-auto w-12 h-12 rounded-2xl bg-primary-500 flex items-center justify-center mb-3">
-          <span className="text-white font-bold text-lg">B</span>
+    <SanctuaryCard className="p-8 sm:p-10">
+      <div className="mb-6 text-center">
+        <h1 className="text-xl font-semibold text-slate-900">Welcome back</h1>
+        <p className="mt-1 text-sm text-slate-500">Sign in to your BuddyAI account</p>
+      </div>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isSubmitting}
+            autoComplete="email"
+          />
         </div>
-        <CardTitle className="text-xl">Welcome back</CardTitle>
-        <CardDescription>Sign in to your BuddyAI account</CardDescription>
-      </CardHeader>
-      <form onSubmit={handleSubmit}>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="you@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isSubmitting}
-              autoComplete="email"
-            />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={isSubmitting}
-              autoComplete="current-password"
-            />
-          </div>
-        </CardContent>
-        <CardFooter className="flex flex-col gap-3">
-          <Button type="submit" className="w-full" disabled={isSubmitting}>
-            {isSubmitting ? 'Signing in...' : 'Sign In'}
-          </Button>
-          <p className="text-sm text-neutral-500 text-center">
-            Don't have an account?{' '}
-            <Link href="/register" className="text-primary-600 hover:text-primary-700 font-medium">
-              Create one
-            </Link>
-          </p>
-        </CardFooter>
+        <div className="space-y-2">
+          <Label htmlFor="password">Password</Label>
+          <Input
+            id="password"
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={isSubmitting}
+            autoComplete="current-password"
+          />
+        </div>
+        <Button type="submit" className="w-full bg-primary-500 hover:bg-primary-600" disabled={isSubmitting}>
+          {isSubmitting ? 'Signing in...' : 'Sign In'}
+        </Button>
+        <p className="text-sm text-neutral-500 text-center pt-2">
+          Don&apos;t have an account?{' '}
+          <Link href="/register" className="text-primary-600 hover:text-primary-700 font-medium">
+            Create one
+          </Link>
+        </p>
       </form>
-    </Card>
+    </SanctuaryCard>
   );
 }
